@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
@@ -6,25 +6,16 @@ android {
     buildToolsVersion rootProject.ext.androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "com.correlation.maxim.corrleation_calculator"
         minSdkVersion rootProject.ext.androidMinSdkVersion
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
-        versionName rootProject.ext.versionName
-        versionCode rootProject.ext.versionCode
-        archivesBaseName = rootProject.ext.archivesBaseName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug {
-            debuggable true
-        }
         release {
             minifyEnabled false
-            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -32,34 +23,19 @@ android {
 }
 
 dependencies {
-    compile project(path: ':data')
-    compile project(path: ':domain')
-
     def android = rootProject.ext.androidDependences
     def libraries = rootProject.ext.librariesDependeces
     def test = rootProject.ext.testingDependeces
 
+    //android
     compile android.appCompat
-    compile android.design
-    compile android.constraintLayout
-    compile android.recyclerView
-    compile android.cardView
-    compile android.observableScrollView
-    compile android.textDrawable
-    compile android.picasso
-    compile android.circleIndicator
-    compile android.butterKnife
-    annotationProcessor android.butterKnifeCompiler
 
+    //libraries
+    compile libraries.rxJava
+    compile libraries.rxAndroid
     compile libraries.dagger
     annotationProcessor libraries.daggerCompiler
 
-    androidTestCompile(test.espressoCore, {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    androidTestCompile(test.espressoIntents, {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    //test
     testCompile test.junit
 }
-
