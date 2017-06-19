@@ -1,10 +1,10 @@
-package com.correlation.maxim.data.datasource.memory.model;
+package com.correlation.maxim.domain.model;
 
 /**
  * Created by max on 6/18/17.
  */
 
-public class HealthModelMemory {
+public class HealthData {
     private double estPopCTwCharacteristic;
     private double overallSampleSize;
     private double overallPopulationSize;

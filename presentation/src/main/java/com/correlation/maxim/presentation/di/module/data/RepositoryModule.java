@@ -1,11 +1,11 @@
 package com.correlation.maxim.presentation.di.module.data;
 
 import com.correlation.maxim.data.datasource.memory.Memory;
-import com.correlation.maxim.data.datasource.memory.mappers.HealthModelMemoryMapper;
+import com.correlation.maxim.data.datasource.memory.mappers.HealthDataMemoryMapper;
 import com.correlation.maxim.data.datasource.storage.DeviceStorage;
-import com.correlation.maxim.data.datasource.storage.mappers.HealthModelStorageMapper;
-import com.correlation.maxim.data.repository.HealthModelRepository;
-import com.correlation.maxim.domain.gateway.HealthModelGateWay;
+import com.correlation.maxim.data.datasource.storage.mappers.HealthDataStorageMapper;
+import com.correlation.maxim.data.repository.HealthDatasetsRepository;
+import com.correlation.maxim.domain.gateway.HealthDatasetsGateWay;
 import com.correlation.maxim.presentation.di.scope.PerApplication;
 
 import dagger.Module;
@@ -19,10 +19,10 @@ import dagger.Provides;
 public class RepositoryModule {
     @Provides
     @PerApplication
-    HealthModelGateWay getHealthModelRepository(DeviceStorage deviceStorage,
-                                                Memory memory,
-                                                HealthModelStorageMapper healthModelStorageMapper,
-                                                HealthModelMemoryMapper healthModelMemoryMapper) {
-        return new HealthModelRepository(deviceStorage, memory, healthModelStorageMapper, healthModelMemoryMapper);
+    HealthDatasetsGateWay getHealthModelRepository(DeviceStorage deviceStorage,
+                                                   Memory memory,
+                                                   HealthDataStorageMapper healthModelStorageMapper,
+                                                   HealthDataMemoryMapper healthModelMemoryMapper) {
+        return new HealthDatasetsRepository(deviceStorage, memory, healthModelStorageMapper, healthModelMemoryMapper);
     }
 }

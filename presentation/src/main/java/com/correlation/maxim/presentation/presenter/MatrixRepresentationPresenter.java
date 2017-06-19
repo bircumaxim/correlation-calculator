@@ -1,7 +1,11 @@
 package com.correlation.maxim.presentation.presenter;
 
-import com.correlation.maxim.domain.interactor.GetCorrelationMatrixDataUseCase;
-import com.correlation.maxim.domain.model.HealthModel;
+import android.util.Log;
+
+import com.correlation.maxim.domain.interactor.GetCorrelationMatrixUseCase;
+import com.correlation.maxim.domain.interactor.GetCorrelationOfTwoDatasetsUseCase;
+import com.correlation.maxim.domain.model.HealthData;
+import com.correlation.maxim.domain.model.HealthValueName;
 import com.correlation.maxim.presentation.navigation.Navigator;
 import com.correlation.maxim.presentation.view.MatrixRepresentationView;
 
@@ -17,12 +21,16 @@ import rx.observers.Subscribers;
 
 public class MatrixRepresentationPresenter extends BasePresenter<MatrixRepresentationView> {
     private Navigator navigator;
-    private GetCorrelationMatrixDataUseCase getCorrelationMatrixDataUseCase;
+    private GetCorrelationMatrixUseCase getCorrelationMatrixDataUseCase;
+    private GetCorrelationOfTwoDatasetsUseCase getCorrelationOfTwoDatasetsUseCase;
 
     @Inject
-    public MatrixRepresentationPresenter(Navigator navigator, GetCorrelationMatrixDataUseCase getCorrelationMatrixDataUseCase) {
+    public MatrixRepresentationPresenter(Navigator navigator,
+                                         GetCorrelationMatrixUseCase getCorrelationMatrixDataUseCase,
+                                         GetCorrelationOfTwoDatasetsUseCase getCorrelationOfTwoDatasetsUseCase) {
         this.navigator = navigator;
         this.getCorrelationMatrixDataUseCase = getCorrelationMatrixDataUseCase;
+        this.getCorrelationOfTwoDatasetsUseCase = getCorrelationOfTwoDatasetsUseCase;
     }
 
     public void loadCorrelationMatrixData() {
@@ -35,7 +43,7 @@ public class MatrixRepresentationPresenter extends BasePresenter<MatrixRepresent
         );
     }
 
-    private void onMatrixDataLoaded(List<HealthModel> healthModelList) {
+    private void onMatrixDataLoaded(List<HealthData> healthModelList) {
         getView().updateCorrelationMatrixList(healthModelList);
     }
 

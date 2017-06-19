@@ -1,9 +1,8 @@
 package com.correlation.maxim.data.datasource.memory.mappers;
 
-import com.correlation.maxim.data.datasource.memory.model.HealthModelMemory;
-import com.correlation.maxim.domain.mappers.Mapper;
+import com.correlation.maxim.data.datasource.memory.model.HealthDataMemory;
 import com.correlation.maxim.domain.mappers.TwoWaysMapper;
-import com.correlation.maxim.domain.model.HealthModel;
+import com.correlation.maxim.domain.model.HealthData;
 
 import javax.inject.Inject;
 
@@ -11,17 +10,17 @@ import javax.inject.Inject;
  * Created by max on 6/18/17.
  */
 
-public class HealthModelMemoryMapper implements TwoWaysMapper<HealthModelMemory, HealthModel> {
+public class HealthDataMemoryMapper implements TwoWaysMapper<HealthDataMemory, HealthData> {
     @Inject
-    public HealthModelMemoryMapper() {
+    public HealthDataMemoryMapper() {
     }
 
     @Override
-    public HealthModel map(HealthModelMemory healthModelMemory) {
+    public HealthData map(HealthDataMemory healthModelMemory) {
         if (healthModelMemory == null)
             return null;
 
-        HealthModel healthModel = new HealthModel();
+        HealthData healthModel = new HealthData();
 
         healthModel.setEstPopCTwCharacteristic(healthModelMemory.getEstPopCTwCharacteristic());
         healthModel.setOverallSampleSize(healthModelMemory.getOverallSampleSize());
@@ -36,11 +35,11 @@ public class HealthModelMemoryMapper implements TwoWaysMapper<HealthModelMemory,
     }
 
     @Override
-    public HealthModelMemory inverseMap(HealthModel healthModel) {
+    public HealthDataMemory inverseMap(HealthData healthModel) {
         if (healthModel == null)
             return null;
 
-        HealthModelMemory healthModelMemory = new HealthModelMemory();
+        HealthDataMemory healthModelMemory = new HealthDataMemory();
 
         healthModelMemory.setEstPopCTwCharacteristic(healthModel.getEstPopCTwCharacteristic());
         healthModelMemory.setOverallSampleSize(healthModel.getOverallSampleSize());

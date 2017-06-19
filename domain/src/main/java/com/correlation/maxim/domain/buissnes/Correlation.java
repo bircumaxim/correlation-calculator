@@ -1,50 +1,36 @@
 package com.correlation.maxim.domain.buissnes;
 
-import org.apache.commons.math3.linear.BlockRealMatrix;
-import org.apache.commons.math3.linear.RealMatrix;
+import com.correlation.maxim.domain.model.HealthSingleValueData;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.apache.commons.math3.exception.DimensionMismatchException;
+import org.apache.commons.math3.exception.MathIllegalArgumentException;
+import org.apache.commons.math3.exception.util.LocalizedFormats;
+import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 /**
  * Created by max on 6/18/17.
  */
 
-public abstract class Correlation<T> {
-
-    public List<T> compute(List<T> list) {
-        RealMatrix matrix = convertListToRealMatrix(list);
-        RealMatrix outMatrix = computeCorrelationMatrix(matrix);
-
-        return mpatToList(outMatrix);
+public class Correlation {
+    private Correlation() {
     }
 
-    private List<T> mpatToList(RealMatrix outMatrix) {
-        List<T> result = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            double[] column = outMatrix.getColumn(i);
-            result.add(mapColumn(column));
-        }
-        return result;
+    public static double correlation(HealthSingleValueData xArray, HealthSingleValueData yArray) {
+        return correlation(xArray.getDataset(), yArray.getDataset());
     }
 
-    private RealMatrix computeCorrelationMatrix(RealMatrix matrix) {
-        int nVars = matrix.getColumnDimension();
-        RealMatrix outMatrix = new BlockRealMatrix(nVars, nVars);
-        for (int i = 0; i < nVars; i++) {
-            for (int j = 0; j < i; j++) {
-
-                double corr = CorrelationUtils.correlation(matrix.getColumn(i), matrix.getColumn(j));
-                outMatrix.setEntry(i, j, corr);
-                outMatrix.setEntry(j, i, corr);
+    public static double correlation(final double[] xArray, final double[] yArray) {
+        SimpleRegression regression = new SimpleRegression();
+        if (xArray.length != yArray.length) {
+            throw new DimensionMismatchException(xArray.length, yArray.length);
+        } else if (xArray.length < 2) {
+            throw new MathIllegalArgumentException(LocalizedFormats.INSUFFICIENT_DIMENSION,
+                    xArray.length, 2);
+        } else {
+            for (int i = 0; i < xArray.length; i++) {
+                regression.addData(xArray[i], yArray[i]);
             }
-            outMatrix.setEntry(i, i, 1d);
+            return regression.getR();
         }
-        return outMatrix;
     }
-
-    abstract RealMatrix convertListToRealMatrix(List<T> dataList);
-
-    abstract T mapColumn(double[] column);
-
 }

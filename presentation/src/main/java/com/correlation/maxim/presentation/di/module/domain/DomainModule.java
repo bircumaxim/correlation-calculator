@@ -1,7 +1,7 @@
 package com.correlation.maxim.presentation.di.module.domain;
 
-import com.correlation.maxim.domain.gateway.HealthModelGateWay;
-import com.correlation.maxim.domain.interactor.GetCorrelationMatrixDataUseCase;
+import com.correlation.maxim.domain.gateway.HealthDatasetsGateWay;
+import com.correlation.maxim.domain.interactor.GetCorrelationMatrixUseCase;
 import com.correlation.maxim.presentation.di.scope.PerActivity;
 
 import dagger.Module;
@@ -15,7 +15,7 @@ import dagger.Provides;
 public class DomainModule {
     @Provides
     @PerActivity
-    GetCorrelationMatrixDataUseCase getCorrelationMatrixDataUseCase(HealthModelGateWay healthModelGateWay) {
-        return new GetCorrelationMatrixDataUseCase(healthModelGateWay);
+    GetCorrelationMatrixUseCase getCorrelationMatrixDataUseCase(HealthDatasetsGateWay healthModelGateWay) {
+        return new GetCorrelationMatrixUseCase(healthModelGateWay);
     }
 }

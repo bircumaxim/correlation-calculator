@@ -1,6 +1,6 @@
 package com.correlation.maxim.domain.buissnes;
 
-import com.correlation.maxim.domain.model.HealthModel;
+import com.correlation.maxim.domain.model.HealthData;
 
 import org.apache.commons.math3.linear.BlockRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;
@@ -11,15 +11,15 @@ import java.util.List;
  * Created by max on 6/18/17.
  */
 
-public class HealthDataCorrelation extends Correlation<HealthModel> {
+public class HealthDatasetCorrelationMatrix extends CorrelationMatrix<HealthData> {
     private static final int MATRIX_DIMENSION = 8;
 
     @Override
-    RealMatrix convertListToRealMatrix(List<HealthModel> dataList) {
+    RealMatrix convertListToRealMatrix(List<HealthData> dataList) {
         RealMatrix matrix = new BlockRealMatrix(dataList.size(), MATRIX_DIMENSION);
         int i = 0;
 
-        for (HealthModel element : dataList) {
+        for (HealthData element : dataList) {
             matrix.setEntry(i, 0, element.getYear());
             matrix.setEntry(i, 1, element.getOverallSampleSize());
             matrix.setEntry(i, 2, element.getOverallPopulationSize());
@@ -34,12 +34,12 @@ public class HealthDataCorrelation extends Correlation<HealthModel> {
     }
 
     @Override
-    HealthModel mapColumn(double[] column) {
+    HealthData mapColumn(double[] column) {
         if (column.length < MATRIX_DIMENSION) {
             return null;
         }
 
-        HealthModel healthModel = new HealthModel();
+        HealthData healthModel = new HealthData();
 
         healthModel.setYear(column[0]);
         healthModel.setOverallSampleSize(column[1]);

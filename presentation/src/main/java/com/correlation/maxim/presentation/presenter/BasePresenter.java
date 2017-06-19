@@ -2,7 +2,12 @@ package com.correlation.maxim.presentation.presenter;
 
 import com.correlation.maxim.domain.interactor.UseCase;
 
+import rx.Observable;
+import rx.Single;
 import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -28,6 +33,22 @@ public abstract class BasePresenter<V> {
 
     <T> void execute(UseCase<T> useCase, Subscriber<T> subscriber) {
         subscriptions.add(useCase.execute(subscriber));
+    }
+
+    <T> void execute(Single<T> observable, Subscriber<T> subscriber) {
+        Subscription subscription = observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+        subscriptions.add(subscription);
+    }
+
+    <T> void execute(Observable<T> observable, Subscriber<T> subscriber) {
+        Subscription subscription = observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+        subscriptions.add(subscription);
     }
 
     public V getView() {

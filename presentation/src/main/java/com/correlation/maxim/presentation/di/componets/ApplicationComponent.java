@@ -1,6 +1,6 @@
 package com.correlation.maxim.presentation.di.componets;
 
-import com.correlation.maxim.domain.gateway.HealthModelGateWay;
+import com.correlation.maxim.domain.gateway.HealthDatasetsGateWay;
 import com.correlation.maxim.presentation.di.module.data.DataModule;
 import com.correlation.maxim.presentation.di.module.data.DataSourceModule;
 import com.correlation.maxim.presentation.di.module.data.RepositoryModule;
@@ -23,5 +23,5 @@ import dagger.Component;
         }
 )
 public interface ApplicationComponent {
-    HealthModelGateWay getHealthModelGateWay();
+    HealthDatasetsGateWay getHealthModelGateWay();
 }

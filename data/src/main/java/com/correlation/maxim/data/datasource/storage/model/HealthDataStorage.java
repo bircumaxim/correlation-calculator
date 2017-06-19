@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by max on 6/18/17.
  */
 
-public class HealthModelStorage {
+public class HealthDataStorage {
     @SerializedName("est_pop_ct_w_characteristic")
     private double estPopCTwCharacteristic;
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="health_dataset_names">
+        <item>year</item>
+        <item>upper_cl</item>
+        <item>lower_cl</item>
+        <item>sample_case_w_characteristic</item>
+        <item>percentage_w_characteristic</item>
+        <item>overall_population_size</item>
+        <item>overall_sample_size</item>
+        <item>est_pop_ct_w_characteristic</item>
+    </string-array>
+</resources>

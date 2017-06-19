@@ -3,8 +3,10 @@ package com.correlation.maxim.presentation.ui.activities;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
-import com.correlation.maxim.domain.model.HealthModel;
+import com.correlation.maxim.domain.model.HealthData;
 import com.correlation.maxim.presentation.R;
 import com.correlation.maxim.presentation.presenter.MatrixRepresentationPresenter;
 import com.correlation.maxim.presentation.ui.adapters.CorrelationMatrixAdapter;
@@ -20,7 +22,9 @@ import javax.inject.Inject;
 
 public class MatrixRepresentationActivity extends BaseActivity<MatrixRepresentationView, MatrixRepresentationPresenter> implements MatrixRepresentationView {
 
+
     protected RecyclerView recyclerView;
+
     private CorrelationMatrixAdapter correlationMatrixAdapter;
 
     @Override
@@ -28,22 +32,8 @@ public class MatrixRepresentationActivity extends BaseActivity<MatrixRepresentat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrix_representation);
         getActivityComponent().inject(this);
-
         initViews();
-        initRecyclerView();
-    }
-
-    private void initViews() {
-        recyclerView = (RecyclerView) findViewById(R.id.correlations_recycler_view);
-    }
-
-    private void initRecyclerView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(layoutManager);
-
-        correlationMatrixAdapter = new CorrelationMatrixAdapter();
-        recyclerView.setAdapter(correlationMatrixAdapter);
+        setupRecyclerView();
     }
 
     @Inject
@@ -59,6 +49,26 @@ public class MatrixRepresentationActivity extends BaseActivity<MatrixRepresentat
         presenter.loadCorrelationMatrixData();
     }
 
+    private void initViews() {
+        recyclerView = (RecyclerView) findViewById(R.id.correlations_recycler_view);
+
+    }
+
+
+    private void setupRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+        correlationMatrixAdapter = new CorrelationMatrixAdapter();
+        correlationMatrixAdapter.getOnClickObservable().subscribe(this::onCellSelected);
+        recyclerView.setAdapter(correlationMatrixAdapter);
+    }
+
+    public void onCellSelected(HealthData healthModel) {
+        //TODO handle here clicks
+    }
+
     @Override
     public void showLoading() {
         //TODO implement here loading
@@ -70,8 +80,8 @@ public class MatrixRepresentationActivity extends BaseActivity<MatrixRepresentat
     }
 
     @Override
-    public void updateCorrelationMatrixList(List<HealthModel> modelsList) {
-        correlationMatrixAdapter.setData(modelsList);
+    public void updateCorrelationMatrixList(List<HealthData> modelsList) {
+        correlationMatrixAdapter.addAll(modelsList);
     }
 }
 

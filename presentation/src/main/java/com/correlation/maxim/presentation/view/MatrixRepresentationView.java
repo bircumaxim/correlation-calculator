@@ -1,6 +1,6 @@
 package com.correlation.maxim.presentation.view;
 
-import com.correlation.maxim.domain.model.HealthModel;
+import com.correlation.maxim.domain.model.HealthData;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface MatrixRepresentationView extends BaseView {
-    public void updateCorrelationMatrixList(List<HealthModel> modelsList);
+    public void updateCorrelationMatrixList(List<HealthData> modelsList);
 }

@@ -1,6 +1,6 @@
 package com.correlation.maxim.data.datasource.memory;
 
-import com.correlation.maxim.data.datasource.memory.model.HealthModelMemory;
+import com.correlation.maxim.data.datasource.memory.model.HealthDataMemory;
 
 import java.util.List;
 
@@ -12,13 +12,13 @@ import rx.Observable;
  */
 
 public class Memory {
-    private List<HealthModelMemory> healthDataList;
+    private List<HealthDataMemory> healthDataList;
 
-    public Observable<List<HealthModelMemory>> getHealthData() {
+    public Observable<List<HealthDataMemory>> getHealthData() {
         return Observable.just(healthDataList);
     }
 
-    public void setHealthDataList(List<HealthModelMemory> healthDataList) {
+    public void setHealthDataList(List<HealthDataMemory> healthDataList) {
         this.healthDataList = healthDataList;
     }
 }

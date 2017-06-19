@@ -2,7 +2,7 @@ package com.correlation.maxim.data.datasource.storage;
 
 import android.content.Context;
 
-import com.correlation.maxim.data.datasource.storage.model.HealthModelStorage;
+import com.correlation.maxim.data.datasource.storage.model.HealthDataStorage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -28,8 +28,8 @@ public class DeviceStorage {
         this.gson = gson;
     }
 
-    public Observable<List<HealthModelStorage>> getHealthData() {
-        Type collectionType = new TypeToken<List<HealthModelStorage>>() {
+    public Observable<List<HealthDataStorage>> getHealthData() {
+        Type collectionType = new TypeToken<List<HealthDataStorage>>() {
         }.getType();
         return Observable.just(gson.fromJson(JsonHelper.loadJSONFromAsset(context, "data.json"), collectionType));
     }
