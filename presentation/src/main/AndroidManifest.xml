@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".ui.activities.MatrixRepresentationActivity" />
         <activity android:name=".ui.activities.TwoDatasetsActivity" />
-        <activity android:name=".ui.activities.StartActivity"></activity>
+        <activity android:name=".ui.activities.StartActivity" />
+        <activity android:name=".ui.activities.ChartActivity"></activity>
     </application>
 
 </manifest>

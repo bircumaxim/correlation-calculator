@@ -48,17 +48,17 @@ public class TwoDatasetsActivity extends BaseActivity<TwoDatasetsView, TwoDatase
         computeButton.setOnClickListener(this::computeCorrelation);
     }
 
-    private void computeCorrelation(View view) {
-        HealthValueNamePresentation firstDatasetName = HealthValueNamePresentation.getHealthValueByName(firstDataSetName.getSelectedItem().toString());
-        HealthValueNamePresentation secondDatasetName = HealthValueNamePresentation.getHealthValueByName(secondDataSetName.getSelectedItem().toString());
-        presenter.computeCorrelation(firstDatasetName, secondDatasetName);
-    }
-
     private void initSpinners() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.health_dataset_names, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         firstDataSetName.setAdapter(adapter);
         secondDataSetName.setAdapter(adapter);
+    }
+
+    private void computeCorrelation(View view) {
+        HealthValueNamePresentation firstDatasetName = HealthValueNamePresentation.getHealthValueByName(firstDataSetName.getSelectedItem().toString());
+        HealthValueNamePresentation secondDatasetName = HealthValueNamePresentation.getHealthValueByName(secondDataSetName.getSelectedItem().toString());
+        presenter.computeCorrelation(firstDatasetName, secondDatasetName);
     }
 
     @Override

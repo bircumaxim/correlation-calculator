@@ -1,4 +1,4 @@
-package com.correlation.maxim.domain.buissnes;
+package com.correlation.maxim.domain.buissnes.correlation;
 
 import com.correlation.maxim.domain.model.HealthData;
 

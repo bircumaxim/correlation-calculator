@@ -1,6 +1,6 @@
 package com.correlation.maxim.domain.interactor;
 
-import com.correlation.maxim.domain.buissnes.HealthDatasetCorrelationMatrix;
+import com.correlation.maxim.domain.buissnes.correlation.HealthDatasetCorrelationMatrix;
 import com.correlation.maxim.domain.gateway.HealthDatasetsGateWay;
 import com.correlation.maxim.domain.model.HealthData;
 

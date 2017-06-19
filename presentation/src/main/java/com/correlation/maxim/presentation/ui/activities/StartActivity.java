@@ -29,6 +29,7 @@ public class StartActivity extends BaseActivity<StartView, StartPresenter> imple
     private void initViews(){
         findViewById(R.id.correlation_matrix).setOnClickListener(this::onCorrelationMatrixClick);
         findViewById(R.id.specific_datasets).setOnClickListener(this::onSpecificDatasetClick);
+        findViewById(R.id.chart_visualization).setOnClickListener(this::onChartVisializationClick);
     }
 
     @Override
@@ -47,5 +48,9 @@ public class StartActivity extends BaseActivity<StartView, StartPresenter> imple
 
     private void onCorrelationMatrixClick(View view) {
         presenter.correlationMatrix();
+    }
+
+    private void onChartVisializationClick(View view) {
+        presenter.chartVisualization();
     }
 }

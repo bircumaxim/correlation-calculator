@@ -1,0 +1,91 @@
+package com.correlation.maxim.domain.buissnes.regression;
+
+/**
+ * Created by Maxim Bircu on 6/19/17.
+ */
+
+public class RegressionCalculator {
+    private double xSum;
+    private double ySum;
+    private double xySum;
+    private double x2Sum;
+    private int sampleSize;
+    private double maxRange;
+    private double minRange;
+
+    double[] xSample;
+    double[] ySample;
+
+    public RegressionCalculator(double[] xSample, double[] ySample) {
+        this.xSample = xSample;
+        this.ySample = ySample;
+        this.xSum = computeSume(xSample);
+        this.ySum = computeSume(ySample);
+        this.xySum = computeXYsum(xSample, ySample);
+        this.x2Sum = computeSquaredSum(xSample);
+        this.sampleSize = xSample.length;
+        this.maxRange = computeMaxRange(xSample);
+        this.minRange = computeMinRange(xSample);
+    }
+
+    public double computeEquationConstant() {
+        return (ySum * x2Sum - xSum * xySum) / (sampleSize * x2Sum - xSum * xSum);
+    }
+
+
+    public double computeEquationSlope() {
+        return (sampleSize * xySum - xSum * ySum) / (sampleSize * x2Sum - xSum * xSum);
+    }
+
+    public double getMaxRange() {
+        return this.maxRange;
+    }
+
+    private double computeMaxRange(double[] sample) {
+        double maxRange = 0;
+        for (double aSample : sample) {
+            if (aSample > maxRange) {
+                maxRange = aSample;
+            }
+        }
+        return maxRange;
+    }
+
+    public double getMinRange() {
+        return minRange;
+    }
+
+    private double computeMinRange(double[] sample) {
+        double minRange = this.maxRange;
+        for (double aSample : sample) {
+            if (aSample < minRange) {
+                minRange = aSample;
+            }
+        }
+        return minRange;
+    }
+
+    private double computeSume(double[] sample) {
+        double sum = 0;
+        for (double aSample : sample) {
+            sum += aSample;
+        }
+        return sum;
+    }
+
+    private double computeXYsum(double[] xSample, double[] ySample) {
+        double sum = 0;
+        for (int i = 0; i < xSample.length; i++) {
+            sum += (xSample[i] * ySample[i]);
+        }
+        return sum;
+    }
+
+    private double computeSquaredSum(double[] sample) {
+        double sum = 0;
+        for (double aSample : sample) {
+            sum += (aSample * aSample);
+        }
+        return sum;
+    }
+}

@@ -1,4 +1,4 @@
-package com.correlation.maxim.domain.buissnes;
+package com.correlation.maxim.domain.buissnes.correlation;
 
 import org.apache.commons.math3.linear.BlockRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;

@@ -25,4 +25,8 @@ public class StartPresenter extends BasePresenter<StartView> {
     public void specificDataset() {
         navigator.openTwoDatasetsActivity();
     }
+
+    public void chartVisualization(){
+        navigator.openChartActivity();
+    }
 }

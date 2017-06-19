@@ -39,6 +39,11 @@ dependencies {
     def libraries = rootProject.ext.librariesDependeces
     def test = rootProject.ext.testingDependeces
 
+
+//    MPAndroid chart.
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+
     compile android.appCompat
     compile android.design
     compile android.constraintLayout
