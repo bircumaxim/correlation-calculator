@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/year_correlation"
+        android:layout_width="@dimen/cell_size"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/overAllSample_correlation"
+        android:layout_width="@dimen/cell_size"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/overAllSPopulatoin_correlation"
+        android:layout_width="@dimen/cell_size"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/sampleCase_correlation"
+        android:layout_width="@dimen/cell_size"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/estPopulation_correlation"
+        android:layout_width="@dimen/cell_size"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/percentage_correlation"
+        android:layout_width="@dimen/cell_size"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/lowerCl_correlation"
+        android:layout_width="@dimen/cell_size"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/upperCl_correlation"
+        android:layout_width="@dimen/cell_size"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:maxLines="1"
+        android:textColor="#000"
+        android:textSize="@dimen/text_size" />
+
+</LinearLayout>

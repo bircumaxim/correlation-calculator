@@ -34,8 +34,13 @@ dependencies {
     compile libraries.rxJava
     compile libraries.rxAndroid
     compile libraries.dagger
+
+    //apache commons math
+    compile 'org.apache.commons:commons-math3:3.6.1'
+
     annotationProcessor libraries.daggerCompiler
 
     //test
     testCompile test.junit
+    androidTestCompile test.testRunner
 }

@@ -50,4 +50,5 @@ dependencies {
     testCompile test.hamcrest
 
     testCompile test.junit
+    androidTestCompile test.testRunner
 }

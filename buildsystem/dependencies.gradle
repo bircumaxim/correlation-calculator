@@ -24,6 +24,7 @@ ext {
     dexmakerVersion = '1.0'
     espressoVersion = '2.2.2'
     testingSupportLibVersion = '0.1'
+    testRunnerVersion = '0.5'
 
     androidDependences = [
             appCompat           : "com.android.support:appcompat-v7:${appCompatVersion}",
@@ -60,6 +61,7 @@ ext {
             assertj        : "org.assertj:assertj-core:${assertJVersion}",
             mockito        : "org.mockito:mockito-core:${mockitoVersion}",
             espressoCore   : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-            espressoIntents: "com.android.support.test.espresso:espresso-intents:${espressoVersion}"
+            espressoIntents: "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
+            testRunner     : "com.android.support.test:runner:${testRunnerVersion}"
     ]
 }
