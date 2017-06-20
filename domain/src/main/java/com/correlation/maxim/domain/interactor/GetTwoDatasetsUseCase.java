@@ -17,7 +17,7 @@ public class GetTwoDatasetsUseCase {
     private HealthDatasetsGateWay healthDatasetsGateWay;
 
     @Inject
-    public GetTwoDatasetsUseCase(HealthDatasetsGateWay healthDatasetsGateWay) {
+    GetTwoDatasetsUseCase(HealthDatasetsGateWay healthDatasetsGateWay) {
         this.healthDatasetsGateWay = healthDatasetsGateWay;
     }
 

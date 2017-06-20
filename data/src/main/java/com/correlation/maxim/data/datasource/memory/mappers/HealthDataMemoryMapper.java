@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 public class HealthDataMemoryMapper implements TwoWaysMapper<HealthDataMemory, HealthData> {
     @Inject
-    public HealthDataMemoryMapper() {
+    HealthDataMemoryMapper() {
     }
 
     @Override

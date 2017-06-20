@@ -3,7 +3,6 @@ package com.correlation.maxim.presentation.ui.activities;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -11,8 +10,6 @@ import com.correlation.maxim.presentation.R;
 import com.correlation.maxim.presentation.model.HealthValueNamePresentation;
 import com.correlation.maxim.presentation.presenter.TwoDatasetsPresenter;
 import com.correlation.maxim.presentation.view.TwoDatasetsView;
-
-import org.w3c.dom.Text;
 
 import javax.inject.Inject;
 
@@ -22,7 +19,6 @@ public class TwoDatasetsActivity extends BaseActivity<TwoDatasetsView, TwoDatase
     private TextView correlationLabel;
     private Spinner firstDataSetName;
     private Spinner secondDataSetName;
-    private Button computeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +39,8 @@ public class TwoDatasetsActivity extends BaseActivity<TwoDatasetsView, TwoDatase
     private void initViews() {
         firstDataSetName = (Spinner) findViewById(R.id.first_dataset_name);
         secondDataSetName = (Spinner) findViewById(R.id.second_dataset_name);
-        computeButton = (Button) findViewById(R.id.compute_correlation);
+        findViewById(R.id.compute_correlation).setOnClickListener(this::computeCorrelation);
         correlationLabel = (TextView) findViewById(R.id.correlation_result_label);
-        computeButton.setOnClickListener(this::computeCorrelation);
     }
 
     private void initSpinners() {

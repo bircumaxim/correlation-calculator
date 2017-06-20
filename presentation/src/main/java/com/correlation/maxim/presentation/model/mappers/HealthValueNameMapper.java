@@ -15,7 +15,7 @@ import javax.inject.Inject;
 public class HealthValueNameMapper implements Mapper<HealthValueNamePresentation, HealthValueName> {
 
     @Inject
-    public HealthValueNameMapper() {
+    HealthValueNameMapper() {
     }
 
     @Nullable

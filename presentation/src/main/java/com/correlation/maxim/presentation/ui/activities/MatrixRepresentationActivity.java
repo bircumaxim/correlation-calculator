@@ -3,8 +3,6 @@ package com.correlation.maxim.presentation.ui.activities;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
 
 import com.correlation.maxim.domain.model.HealthData;
 import com.correlation.maxim.presentation.R;
@@ -22,9 +20,7 @@ import javax.inject.Inject;
 
 public class MatrixRepresentationActivity extends BaseActivity<MatrixRepresentationView, MatrixRepresentationPresenter> implements MatrixRepresentationView {
 
-
     protected RecyclerView recyclerView;
-
     private CorrelationMatrixAdapter correlationMatrixAdapter;
 
     @Override
@@ -54,7 +50,6 @@ public class MatrixRepresentationActivity extends BaseActivity<MatrixRepresentat
 
     }
 
-
     private void setupRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -66,17 +61,17 @@ public class MatrixRepresentationActivity extends BaseActivity<MatrixRepresentat
     }
 
     public void onCellSelected(HealthData healthModel) {
-        //TODO handle here clicks
+        //TODO handle here clicks.
     }
 
     @Override
     public void showLoading() {
-        //TODO implement here loading
+        //TODO implement here loading.
     }
 
     @Override
     public void showError() {
-        //TODO notify user about error
+        //TODO implement here error notification.
     }
 
     @Override

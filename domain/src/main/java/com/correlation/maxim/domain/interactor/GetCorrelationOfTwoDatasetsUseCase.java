@@ -17,7 +17,7 @@ public class GetCorrelationOfTwoDatasetsUseCase {
     private HealthDatasetsGateWay healthDatasetsGateWay;
 
     @Inject
-    public GetCorrelationOfTwoDatasetsUseCase(HealthDatasetsGateWay healthDatasetsGateWay) {
+    GetCorrelationOfTwoDatasetsUseCase(HealthDatasetsGateWay healthDatasetsGateWay) {
         this.healthDatasetsGateWay = healthDatasetsGateWay;
     }
 

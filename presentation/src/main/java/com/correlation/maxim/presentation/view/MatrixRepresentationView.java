@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface MatrixRepresentationView extends BaseView {
-    public void updateCorrelationMatrixList(List<HealthData> modelsList);
+    void updateCorrelationMatrixList(List<HealthData> modelsList);
 }

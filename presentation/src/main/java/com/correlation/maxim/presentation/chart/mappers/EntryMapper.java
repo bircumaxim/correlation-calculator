@@ -17,7 +17,7 @@ import javax.inject.Inject;
 public class EntryMapper implements Mapper<TwoDatasets, List<Entry>> {
 
     @Inject
-    public EntryMapper() {
+    EntryMapper() {
     }
 
     @Override

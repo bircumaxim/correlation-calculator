@@ -1,8 +1,6 @@
 package com.correlation.maxim.presentation.ui.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.correlation.maxim.presentation.presenter.SplashPresenter;
 import com.correlation.maxim.presentation.view.SplashView;

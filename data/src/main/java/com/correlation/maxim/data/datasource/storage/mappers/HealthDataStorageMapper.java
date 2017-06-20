@@ -13,7 +13,7 @@ import javax.inject.Inject;
 public class HealthDataStorageMapper implements Mapper<HealthDataStorage, HealthData> {
 
     @Inject
-    public HealthDataStorageMapper() {
+    HealthDataStorageMapper() {
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.correlation.maxim.presentation.ui.activities;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 
 import com.correlation.maxim.presentation.R;
@@ -24,8 +23,6 @@ public class ChartActivity extends BaseActivity<ChartView, ChartPresenter> imple
     private LineChart lineChart;
     private Spinner firstDataSetName;
     private Spinner secondDataSetName;
-    private Button addDatasetsButton;
-    private Button drawCorrelationLineButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +64,7 @@ public class ChartActivity extends BaseActivity<ChartView, ChartPresenter> imple
     }
 
     public void onDrawCorrelationLine(View view) {
-        HealthValueNamePresentation firstDatasetName = HealthValueNamePresentation.getHealthValueByName(firstDataSetName.getSelectedItem().toString());
-        HealthValueNamePresentation secondDatasetName = HealthValueNamePresentation.getHealthValueByName(secondDataSetName.getSelectedItem().toString());
-        presenter.addDatasets(firstDatasetName, secondDatasetName);
+        presenter.drawCorrelationLine();
     }
 
     @Override
@@ -80,17 +75,17 @@ public class ChartActivity extends BaseActivity<ChartView, ChartPresenter> imple
 
     @Override
     public void addCorrelationLineDataSet(List<Entry> entries) {
-        chartController.drawCorrelationLine(entries, "Dataset");
+        chartController.drawCorrelationLine(entries, "Correlation");
     }
 
     @Override
     public void showLoading() {
-
+        //TODO implement loading here.
     }
 
     @Override
     public void showError() {
-
+        //TODO show here error notification.
     }
 
 

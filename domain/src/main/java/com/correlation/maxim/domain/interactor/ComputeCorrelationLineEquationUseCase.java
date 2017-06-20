@@ -19,7 +19,7 @@ import rx.Observable;
 public class ComputeCorrelationLineEquationUseCase {
 
     @Inject
-    public ComputeCorrelationLineEquationUseCase() {
+    ComputeCorrelationLineEquationUseCase() {
     }
 
     public Observable<List<DomainEntry>> build(TwoDatasets twoDatasets) {

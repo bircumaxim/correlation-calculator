@@ -1,9 +1,12 @@
 package com.correlation.maxim.presentation.chart;
 
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 
 import com.correlation.maxim.domain.portability.BiConsumer;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -25,6 +28,7 @@ public class ChartController {
     public ChartController(LineChart lineChart) {
         this.chart = lineChart;
         setChartStyle();
+        setAxis();
         dataSets = new ArrayList<>();
     }
 
@@ -58,6 +62,11 @@ public class ChartController {
         chart.setMaxHighlightDistance(100);
     }
 
+    private void setAxis(){
+        chart.getAxisLeft().setEnabled(true);
+        chart.getAxisRight().setEnabled(true);
+    }
+
     private void setCorrelationLineDataSetStyle(LineDataSet dataSet, Integer color) {
         dataSet.setDrawCircles(false);
         dataSet.setLineWidth(1f);
@@ -68,7 +77,7 @@ public class ChartController {
 
     private void setDataSetStyle(LineDataSet dataSet, int color) {
         dataSet.setCircleColor(color);
-        dataSet.setCircleHoleRadius(20f);
+        dataSet.setCircleHoleRadius(50f);
         dataSet.setDrawCircles(true);
         dataSet.setLineWidth(0f);
         dataSet.setDrawValues(false);

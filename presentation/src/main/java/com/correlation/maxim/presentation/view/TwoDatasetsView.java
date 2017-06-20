@@ -5,5 +5,5 @@ package com.correlation.maxim.presentation.view;
  */
 
 public interface TwoDatasetsView extends BaseView {
-    public void setCorrelationResult(Double correlationValue);
+    void setCorrelationResult(Double correlationValue);
 }

@@ -9,6 +9,6 @@ import java.util.List;
  */
 
 public interface ChartView extends BaseView {
-    public void addDatasets(List<Entry> entries);
-    public void addCorrelationLineDataSet(List<Entry> entries);
+    void addDatasets(List<Entry> entries);
+    void addCorrelationLineDataSet(List<Entry> entries);
 }

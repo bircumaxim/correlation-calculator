@@ -14,7 +14,7 @@ public class SplashPresenter extends BasePresenter<SplashView> {
     private Navigator navigator;
 
     @Inject
-    public SplashPresenter(Navigator navigator) {
+    SplashPresenter(Navigator navigator) {
         this.navigator = navigator;
     }
 

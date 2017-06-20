@@ -17,7 +17,7 @@ public class CorrelationRegressionLineUtils {
 
     public static List<DomainEntry> generateRegressionLineEntries(EquationParameters equationParameters) {
         List<DomainEntry> entries = new ArrayList<>();
-        int delta = 1;
+        int delta = (int)equationParameters.getMaxRange() / 1100;
         for (int i = (int)equationParameters.getMinRange(); i <= (int) equationParameters.getMaxRange(); i = i + delta) {
             entries.add(new DomainEntry(i, equationParameters.computeEquationFor(i)));
         }

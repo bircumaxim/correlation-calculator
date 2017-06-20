@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 public class DomainEntryMapper implements Mapper<DomainEntry, Entry> {
     @Inject
-    public DomainEntryMapper() {
+    DomainEntryMapper() {
     }
 
     @Override

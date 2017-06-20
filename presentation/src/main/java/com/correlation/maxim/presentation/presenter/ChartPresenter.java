@@ -2,6 +2,7 @@ package com.correlation.maxim.presentation.presenter;
 
 import com.correlation.maxim.domain.interactor.ComputeCorrelationLineEquationUseCase;
 import com.correlation.maxim.domain.interactor.GetTwoDatasetsUseCase;
+import com.correlation.maxim.domain.logging.Logger;
 import com.correlation.maxim.domain.mappers.ListMapper;
 import com.correlation.maxim.domain.model.DomainEntry;
 import com.correlation.maxim.domain.model.TwoDatasets;
@@ -23,6 +24,8 @@ import rx.observers.Subscribers;
 
 public class ChartPresenter extends BasePresenter<ChartView> {
 
+    private static final String TAG = ChartPresenter.class.getSimpleName();
+    private Logger logger;
     private DomainEntryMapper domainEntryMapper;
     private EntryMapper entryMapper;
     private HealthValueNameMapper healthValueNameMapper;
@@ -32,10 +35,11 @@ public class ChartPresenter extends BasePresenter<ChartView> {
     private TwoDatasets twoDatasets;
 
     @Inject
-    public ChartPresenter(DomainEntryMapper domainEntryMapper, EntryMapper entryMapper,
-                          HealthValueNameMapper healthValueNameMapper,
-                          GetTwoDatasetsUseCase getTwoDatasetsUseCase,
-                          ComputeCorrelationLineEquationUseCase getCorrelationLineUseCase) {
+    ChartPresenter(DomainEntryMapper domainEntryMapper, EntryMapper entryMapper, Logger logger,
+                   HealthValueNameMapper healthValueNameMapper,
+                   GetTwoDatasetsUseCase getTwoDatasetsUseCase,
+                   ComputeCorrelationLineEquationUseCase getCorrelationLineUseCase) {
+        this.logger = logger;
         this.domainEntryMapper = domainEntryMapper;
         this.entryMapper = entryMapper;
         this.healthValueNameMapper = healthValueNameMapper;
@@ -54,7 +58,7 @@ public class ChartPresenter extends BasePresenter<ChartView> {
 
     public void drawCorrelationLine(){
         if(twoDatasets == null){
-            //TODO handle here exception
+            logger.debug(TAG, "null datasets");
         } else {
             execute(getCorrelationLineUseCase.build(twoDatasets),
                     Subscribers.create(
@@ -66,14 +70,15 @@ public class ChartPresenter extends BasePresenter<ChartView> {
     }
 
     private void onDatasetsReceived(TwoDatasets twoDatasets) {
+        this.twoDatasets = twoDatasets;
         getView().addDatasets(entryMapper.map(twoDatasets));
     }
 
     private void onEquationLineComputed(List<DomainEntry> correlationDataset) {
-        getView().addCorrelationLineDataSet(ListMapper.map(correlationDataset, domainEntryMapper::map));
+        getView().addCorrelationLineDataSet(ListMapper.map(correlationDataset, domainEntryMapper));
     }
 
     private void onError(Throwable exception) {
-        //TODO handle here exception
+        logger.error(TAG, exception.getMessage());
     }
 }

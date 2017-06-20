@@ -14,7 +14,7 @@ public class StartPresenter extends BasePresenter<StartView> {
     private Navigator navigator;
 
     @Inject
-    public StartPresenter(Navigator navigator) {
+    StartPresenter(Navigator navigator) {
         this.navigator = navigator;
     }
 

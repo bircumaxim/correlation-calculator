@@ -34,12 +34,12 @@ public class StartActivity extends BaseActivity<StartView, StartPresenter> imple
 
     @Override
     public void showLoading() {
-
+        //TODO implement here loading.
     }
 
     @Override
     public void showError() {
-
+        //TODO implement here error notification.
     }
     
     private void onSpecificDatasetClick(View view) {

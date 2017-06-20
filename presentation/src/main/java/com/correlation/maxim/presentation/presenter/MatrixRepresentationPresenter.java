@@ -1,12 +1,8 @@
 package com.correlation.maxim.presentation.presenter;
 
-import android.util.Log;
-
 import com.correlation.maxim.domain.interactor.GetCorrelationMatrixUseCase;
-import com.correlation.maxim.domain.interactor.GetCorrelationOfTwoDatasetsUseCase;
+import com.correlation.maxim.domain.logging.Logger;
 import com.correlation.maxim.domain.model.HealthData;
-import com.correlation.maxim.domain.model.HealthValueName;
-import com.correlation.maxim.presentation.navigation.Navigator;
 import com.correlation.maxim.presentation.view.MatrixRepresentationView;
 
 import java.util.List;
@@ -20,17 +16,14 @@ import rx.observers.Subscribers;
  */
 
 public class MatrixRepresentationPresenter extends BasePresenter<MatrixRepresentationView> {
-    private Navigator navigator;
+    private static final String TAG = MatrixRepresentationPresenter.class.getSimpleName();
+    private Logger logger;
     private GetCorrelationMatrixUseCase getCorrelationMatrixDataUseCase;
-    private GetCorrelationOfTwoDatasetsUseCase getCorrelationOfTwoDatasetsUseCase;
 
     @Inject
-    public MatrixRepresentationPresenter(Navigator navigator,
-                                         GetCorrelationMatrixUseCase getCorrelationMatrixDataUseCase,
-                                         GetCorrelationOfTwoDatasetsUseCase getCorrelationOfTwoDatasetsUseCase) {
-        this.navigator = navigator;
+    MatrixRepresentationPresenter(Logger logger, GetCorrelationMatrixUseCase getCorrelationMatrixDataUseCase) {
+        this.logger = logger;
         this.getCorrelationMatrixDataUseCase = getCorrelationMatrixDataUseCase;
-        this.getCorrelationOfTwoDatasetsUseCase = getCorrelationOfTwoDatasetsUseCase;
     }
 
     public void loadCorrelationMatrixData() {
@@ -48,6 +41,7 @@ public class MatrixRepresentationPresenter extends BasePresenter<MatrixRepresent
     }
 
     private void onError(Throwable throwable) {
+        logger.error(TAG, throwable.getMessage());
         getView().showError();
     }
 }

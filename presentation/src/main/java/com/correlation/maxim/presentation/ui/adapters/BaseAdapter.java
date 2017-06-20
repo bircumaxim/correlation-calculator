@@ -17,11 +17,11 @@ import rx.subjects.PublishSubject;
 
 public abstract class BaseAdapter<M,VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
     private final int layoutId;
-    private final List<M> data = new ArrayList<M>();
+    private final List<M> data = new ArrayList<>();
     private final PublishSubject<M> onClickSubject = PublishSubject.create();
 
 
-    public BaseAdapter(int layoutId) {
+    BaseAdapter(int layoutId) {
         this.layoutId = layoutId;
     }
 

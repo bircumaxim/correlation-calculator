@@ -13,12 +13,7 @@ public class RegressionCalculator {
     private double maxRange;
     private double minRange;
 
-    double[] xSample;
-    double[] ySample;
-
     public RegressionCalculator(double[] xSample, double[] ySample) {
-        this.xSample = xSample;
-        this.ySample = ySample;
         this.xSum = computeSume(xSample);
         this.ySum = computeSume(ySample);
         this.xySum = computeXYsum(xSample, ySample);
@@ -42,13 +37,13 @@ public class RegressionCalculator {
     }
 
     private double computeMaxRange(double[] sample) {
-        double maxRange = 0;
+        double maxValue = 0;
         for (double aSample : sample) {
-            if (aSample > maxRange) {
-                maxRange = aSample;
+            if (aSample > maxValue) {
+                maxValue = aSample;
             }
         }
-        return maxRange;
+        return maxValue;
     }
 
     public double getMinRange() {
@@ -56,13 +51,13 @@ public class RegressionCalculator {
     }
 
     private double computeMinRange(double[] sample) {
-        double minRange = this.maxRange;
+        double minValue = this.maxRange;
         for (double aSample : sample) {
-            if (aSample < minRange) {
-                minRange = aSample;
+            if (aSample < minValue) {
+                minValue = aSample;
             }
         }
-        return minRange;
+        return minValue;
     }
 
     private double computeSume(double[] sample) {

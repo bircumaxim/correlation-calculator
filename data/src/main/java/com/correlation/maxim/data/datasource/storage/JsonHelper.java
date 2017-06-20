@@ -13,7 +13,7 @@ public class JsonHelper {
     private JsonHelper() {
     }
 
-    public static String loadJSONFromAsset(Context context, String fileName) {
+    static String loadJSONFromAsset(Context context, String fileName) {
         String json;
         try {
             InputStream is = context.getAssets().open(fileName);
